@@ -1,0 +1,30 @@
+library(dplyr)
+
+housing <- amsterdam_weekdays
+
+print(head(housing, 3))
+
+selected_cols <- housing %>% 
+  select(realSum, room_type, cleanliness_rating)
+print(head(selected_cols, 3))
+
+range_cols <- housing %>% 
+  select(realSum:guest_satisfaction_overall)
+print(head(range_cols, 3))
+
+starts_with_r <- housing %>% 
+  select(starts_with("r"))
+print(head(starts_with_r, 3))
+
+dropped_one <- housing %>% 
+  select(-lat)
+print(names(dropped_one))
+
+dropped_multiple <- housing %>% 
+  select(-lng, -lat)
+print(names(dropped_multiple))
+
+dropped_range <- housing %>% 
+  select(-(biz:attr_index_norm))
+print(names(dropped_range))
+
