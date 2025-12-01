@@ -1,0 +1,40 @@
+library(dplyr)
+library(tidyr)
+
+housing <- amsterdam_weekdays
+
+print(head(housing))
+
+print(colSums(is.na(housing)))
+
+clean_omit <- na.omit(housing)
+
+print(nrow(housing))
+print(nrow(clean_omit))
+print(head(clean_omit))
+
+avg_clean <- mean(housing$cleanliness_rating, na.rm = TRUE)
+avg_guest <- mean(housing$guest_satisfaction_overall, na.rm = TRUE)
+
+clean_replace <- housing %>%
+  replace_na(list(
+    room_type = "Unknown",
+    room_shared = 0,
+    room_private = 0,
+    host_is_superhost = "Unknown",
+    multi = "Unknown",
+    biz = "Unknown",
+    cleanliness_rating = avg_clean,
+    guest_satisfaction_overall = avg_guest,
+    bedrooms = 0,
+    dist = 0,
+    metro_dist = 0,
+    attr_index = 0,
+    attr_index_norm = 0,
+    rest_index = 0,
+    rest_index_norm = 0
+  ))
+
+print(head(clean_replace))
+
+print(colSums(is.na(clean_replace)))
