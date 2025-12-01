@@ -1,0 +1,23 @@
+library(dplyr)
+library(stringr)
+library(tidyr)
+
+titanic <- read.csv("Processed_Titanic_Data.csv")
+
+split_list <- str_split(titanic$name, ",")
+print("--- Basic Split Output (List format) ---")
+print(split_list[[1]])
+
+split_matrix <- str_split(titanic$name, ",", simplify = TRUE)
+
+titanic$Last_Name <- str_trim(split_matrix[, 1])
+titanic$Remaining_Name <- str_trim(split_matrix[, 2])
+
+print("--- Data after str_split() (Manual Assignment) ---")
+print(titanic %>% select(name, Last_Name, Remaining_Name))
+
+tidy_titanic <- titanic %>%
+  separate(ticket, into = c("Ticket_Prefix", "Ticket_Number"), sep = " ", extra = "merge", fill = "right")
+
+print("--- Bonus: Using separate() ---")
+print(tidy_titanic %>% select(Ticket_Prefix, Ticket_Number))
