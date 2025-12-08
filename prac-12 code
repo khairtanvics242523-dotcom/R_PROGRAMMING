@@ -1,0 +1,24 @@
+iris_df <- read.csv("IRIS.csv")
+flower_df <- read.csv("Artificial Flower.csv")
+
+iris_clean <- iris_df[, c("Species", "Sepal.Length")]
+names(iris_clean) <- c("FlowerName", "Height")
+
+flower_clean <- flower_df[, c("Flower.type", "Making.cost")]
+names(flower_clean) <- c("FlowerName", "Height")
+
+iris_clean$FlowerName <- as.character(iris_clean$FlowerName)
+flower_clean$FlowerName <- as.character(flower_clean$FlowerName)
+
+iris_clean$Height <- as.numeric(iris_clean$Height)
+flower_clean$Height <- as.numeric(flower_clean$Height)
+
+combined_data <- rbind(iris_clean, flower_clean)
+
+head(iris_clean)
+head(flower_clean)
+head(combined_data)
+
+nrow(iris_clean)
+nrow(flower_clean)
+nrow(combined_data)
