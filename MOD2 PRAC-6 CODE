@@ -1,0 +1,5 @@
+df6 <- read.csv("emails.csv")
+
+nums6 <- df6[, sapply(df6, is.numeric)]
+
+t.test(nums6[,1], nums6[,2], paired = TRUE)
