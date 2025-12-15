@@ -1,0 +1,8 @@
+df2 <- read.csv("Best Selling Mobile Phones 2020.csv")
+
+cat_col <- names(df2)[sapply(df2, is.character)][1]
+
+table(df2[[cat_col]])
+
+library(dplyr)
+df2 %>% count(.data[[cat_col]])
