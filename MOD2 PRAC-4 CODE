@@ -1,0 +1,6 @@
+df4 <- read.csv("mental_health_digital_behavior_data.csv")
+
+num_col <- names(df4)[sapply(df4, is.numeric)][1]
+
+t.test(df4[[num_col]], mu = mean(df4[[num_col]]))
+
