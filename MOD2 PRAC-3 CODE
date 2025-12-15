@@ -1,0 +1,5 @@
+df3 <- read.csv("class.csv")
+
+cat_cols <- names(df3)[sapply(df3, is.character)]
+
+table(df3[[cat_cols[1]]], df3[[cat_cols[2]]])
