@@ -1,0 +1,11 @@
+df5 <- read.csv("online_shopping.csv")
+
+num_col <- names(df5)[sapply(df5, is.numeric)][1]
+cat_col <- names(df5)[sapply(df5, is.character)][1]
+
+df_temp <- df5[, c(num_col, cat_col)]
+df_temp[[cat_col]] <- as.factor(df_temp[[cat_col]])
+
+df_temp <- df_temp[df_temp[[cat_col]] %in% levels(df_temp[[cat_col]])[1:2], ]
+
+t.test(df_temp[[num_col]] ~ df_temp[[cat_col]])
