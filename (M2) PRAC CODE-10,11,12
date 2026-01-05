@@ -1,0 +1,55 @@
+CODE PRAC-10
+library(ggplot2)
+
+stock_df <- read.csv("C:/Users/IT/Downloads/stock_market_metrics.csv")
+
+ggplot(stock_df, aes(x = Day, y = Close_Price)) +
+  geom_line(color = "blue", linewidth = 1) +
+  geom_point(size = 2) +
+  labs(title = "Closing Price Trend", x = "Day", y = "Closing Price")
+
+ggplot(stock_df, aes(x = Open_Price, y = Close_Price)) +
+  geom_point(color = "red", size = 3) +
+  geom_smooth(method = "lm", se = FALSE, color = "black") +
+  labs(title = "Open vs Close Price", x = "Open Price", y = "Close Price")
+
+ggplot(stock_df, aes(x = factor(Day), y = Volume)) +
+  geom_bar(stat = "identity", fill = "darkgreen") +
+  labs(title = "Trading Volume per Day", x = "Day", y = "Volume")
+
+
+
+
+CODE PRAC-11
+library(ggplot2)
+
+health_df <- read.csv("C:/Users/IT/Downloads/hospital_health_data.csv")
+
+ggplot(health_df, aes(x = BMI)) +
+  geom_histogram(binwidth = 2, fill = "steelblue", color = "black") +
+  labs(title = "Distribution of BMI", x = "BMI", y = "Frequency")
+
+ggplot(health_df, aes(x = Glucose_Level)) +
+  geom_histogram(binwidth = 10, fill = "darkorange", color = "black") +
+  labs(title = "Glucose Level Distribution", x = "Glucose Level", y = "Frequency")
+
+ggplot(health_df, aes(x = "", y = Blood_Pressure)) +
+  geom_boxplot(fill = "lightgreen") +
+  labs(title = "Blood Pressure Box Plot", y = "Blood Pressure")
+
+ggplot(health_df, aes(x = "", y = Cholesterol)) +
+  geom_boxplot(fill = "plum") +
+  labs(title = "Cholesterol Box Plot", y = "Cholesterol")
+
+
+
+
+
+CODE PRAC-12
+student_df <- read.csv("C:/Users/IT/Downloads/student_lifestyle_academic.csv")
+
+numeric_data <- student_df[, c("Study_Hours", "Sleep_Hours", "Social_Media_Hours", "Attendance", "CGPA")]
+
+correlation_matrix <- cor(numeric_data)
+
+print(correlation_matrix)
