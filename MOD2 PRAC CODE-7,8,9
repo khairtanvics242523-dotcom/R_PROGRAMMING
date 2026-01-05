@@ -1,0 +1,31 @@
+CODE(PRAC-7)
+df <- read.csv(file.choose())
+
+df$ethnicity <- as.factor(df$ethnicity)
+
+anova_result <- aov(age ~ ethnicity, data = df)
+
+summary(anova_result)
+
+CODE(PRAC-8)
+df <- read.csv(file.choose())
+
+df$Gender <- as.factor(df$Gender)
+df$Study_Method <- as.factor(df$Study_Method)
+
+anova_result <- aov(Score ~ Gender * Study_Method, data = df)
+
+summary(anova_result)
+
+CODE(PRAC-9)
+df <- read.csv(file.choose())
+
+table_data <- xtabs(Count ~ Gender + Course, data = df)
+
+chisq_result <- chisq.test(table_data)
+
+chisq_result
+
+
+
+
