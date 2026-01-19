@@ -1,0 +1,20 @@
+(Code)Practical no-13
+DATASET.1 <- read.csv(file.choose())
+
+DATASET.1
+
+model <- lm(Sales ~ Advertising_Budget, data = DATASET.1)
+
+summary(model)
+
+
+(code)Practical no-14
+dataset2 <- read.csv(file.choose())
+
+dataset2
+
+model <- glm(Loan_Approved ~ Income + Credit_Score,
+             data = dataset2,
+             family = binomial)
+
+summary(model)
